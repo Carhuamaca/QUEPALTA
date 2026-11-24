@@ -1,0 +1,53 @@
+name: Build Que Palta APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "QuePalta_Android_Source.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android platform
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Set up Gradle 8.13
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.13"
+
+      - name: Extract Android source
+        run: |
+          test -f QuePalta_Android_Source.zip
+          unzip -q QuePalta_Android_Source.zip
+          test -f QuePalta_Android/app/build.gradle.kts
+
+      - name: Build debug APK
+        run: gradle --no-daemon -p QuePalta_Android :app:assembleDebug
+
+      - name: Publish APK as downloadable release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: quepalta-build-${{ github.run_number }}
+          name: Que Palta APK ${{ github.run_number }}
+          draft: false
+          prerelease: true
+          files: QuePalta_Android/app/build/outputs/apk/debug/app-debug.apk
