@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - "QuePalta_Android_Source_v3.zip"
 
 permissions:
   contents: write
@@ -36,8 +38,8 @@ jobs:
 
       - name: Extract Android source
         run: |
-          test -f QuePalta_Android_Source.zip
-          unzip -q QuePalta_Android_Source.zip
+          test -f QuePalta_Android_Source_v3.zip
+          unzip -q QuePalta_Android_Source_v3.zip
           test -f QuePalta_Android/app/build.gradle.kts
 
       - name: Build debug APK
