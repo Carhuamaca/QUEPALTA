@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths:
-      - "QuePalta_Android_Source.zip"
 
 permissions:
   contents: write
