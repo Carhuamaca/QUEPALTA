@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "QuePalta_Android_Source_v3.zip"
+      - "QuePalta_Android_Source_v4.zip"
 
 permissions:
   contents: write
