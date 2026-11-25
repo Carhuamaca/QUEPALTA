@@ -1,17 +1,31 @@
-# QUE PALTA — Android 2.2
+# QUE PALTA — Android 2.1
 
-Paquete Android del prototipo Que Palta: 12 misiones sociales, filtros y guardadas, esquema ilustrativo de orientación, lector QR, diario personal y progreso local en SQLite.
+Que Palta es un prototipo Android de acompañamiento a estudiantes ingresantes mediante misiones sociales pequeñas, exploración del campus y retos colaborativos.
 
-## Publicar el APK 2.2
+## Compilar la versión 2.1
 
-1. Descarga el archivo `QuePalta_Android_Source_v4.zip` generado en esta conversación.
-2. Súbelo sin descomprimir a la raíz de este repositorio, conservando ese nombre.
-3. Pulsa **Commit changes**. GitHub Actions iniciará la compilación.
-4. Cuando termine en verde, abre **Releases** y descarga `app-debug.apk` del release más reciente.
+1. Descarga `QuePalta_Android_Source_v4.zip` desde el chat.
+2. Súbelo sin descomprimir a la raíz de este repositorio, conservando exactamente ese nombre.
+3. GitHub Actions ejecutará **Build Que Palta APK** automáticamente.
+4. Cuando termine correctamente, abre **Releases** y descarga `app-debug.apk` del lanzamiento más reciente.
 
-- [Ejecuciones de compilación](https://github.com/Carhuamaca/QUEPALTA/actions)
+- [Ver compilaciones](https://github.com/Carhuamaca/QUEPALTA/actions)
 - [Descargar versiones publicadas](https://github.com/Carhuamaca/QUEPALTA/releases)
 
-## Alcance
+## Mejoras de esta versión
 
-El avance se guarda localmente en SQLite. El inicio de sesión UPC, las cuentas, la sincronización entre celulares y la administración remota están pendientes. Los retos grupales permiten compartir invitaciones, pero cada teléfono guarda su propio progreso. El croquis es ilustrativo y no está a escala; confirma las ubicaciones en la señalización del campus. Esta aplicación es un prototipo académico independiente, no una aplicación oficial de UPC.
+- Rediseño visual editorial, con paleta crema, verde bosque, oliva y coral.
+- Inicio personalizado, progreso, niveles, monedas y actividad semanal.
+- Doce misiones progresivas con búsqueda y filtro por tema.
+- Reflexión opcional al cerrar cada misión.
+- Diario emocional privado con opción de eliminar registros.
+- Retos de equipo con fecha propuesta, participantes, seguimiento local e invitación compartible.
+- Preferencias para aumentar el tamaño del texto y reducir las animaciones.
+- Perfil editable, insignias, historial, exportación de datos y lector QR nativo/manual.
+- SQLite local y migración de datos desde versiones anteriores.
+
+## Alcance y privacidad
+
+El acceso con la cuenta institucional UPC/Microsoft queda pendiente. Esta versión no tiene cuentas ni sincronización en la nube: los datos y retos se guardan localmente en cada dispositivo. Las invitaciones se comparten, pero no sincronizan el progreso entre participantes. El mapa es orientativo y no reemplaza el plano oficial del campus. Las misiones se completan mediante auto-reporte.
+
+El APK generado es una compilación debug para instalar y probar; no es una versión release firmada para Google Play.
