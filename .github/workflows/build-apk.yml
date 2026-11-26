@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "QuePalta_Android_Source_v4.zip"
+      - "QuePalta_Android_Source_v5.zip"
 
 permissions:
   contents: write
@@ -38,9 +38,10 @@ jobs:
 
       - name: Extract Android source
         run: |
-          test -f QuePalta_Android_Source_v4.zip
-          unzip -q QuePalta_Android_Source_v4.zip
+          test -f QuePalta_Android_Source_v5.zip
+          unzip -q QuePalta_Android_Source_v5.zip
           test -f QuePalta_Android/app/build.gradle.kts
+          grep -q 'versionName = "2.3.0"' QuePalta_Android/app/build.gradle.kts
 
       - name: Build debug APK
         run: gradle --no-daemon -p QuePalta_Android :app:assembleDebug
@@ -48,8 +49,8 @@ jobs:
       - name: Publish APK as downloadable release asset
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: quepalta-build-${{ github.run_number }}
-          name: Que Palta APK ${{ github.run_number }}
+          tag_name: quepalta-2.3-build-${{ github.run_number }}
+          name: Que Palta 2.3 APK ${{ github.run_number }}
           draft: false
           prerelease: true
           files: QuePalta_Android/app/build/outputs/apk/debug/app-debug.apk
